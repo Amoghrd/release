@@ -40,3 +40,12 @@ compute:
     azure:
       type: ${COMPUTE_NODE_TYPE}
 EOF
+
+if [ X"${OUTBOUND_TYPE}" == X"UserDefinedRouting" ]; then
+echo "Adding 'outboundType: UserDefinedRouting' in install-config.yaml"
+cat >> "${CONFIG}" << EOF
+platform:
+  azure:
+    outboundType: UserDefinedRouting
+EOF
+fi

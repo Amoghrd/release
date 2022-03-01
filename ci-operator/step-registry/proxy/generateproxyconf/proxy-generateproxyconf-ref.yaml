@@ -1,0 +1,15 @@
+ref:
+  as: proxy-generateproxyconf
+  from: 
+  from_image:
+   namespace: origin
+   name: centos
+   tag: '8'
+  commands: proxy-generateproxyconf-commands.sh
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+  credentials:
+  documentation: |-
+    The proxy generate conf creates the proxy_conf.sh file

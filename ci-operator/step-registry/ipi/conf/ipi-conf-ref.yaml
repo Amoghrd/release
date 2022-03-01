@@ -12,5 +12,9 @@ ref:
   env:
     - name: FIPS_ENABLED
       default: "false"
+    - name: PUBLISH
+      default: ""
+      documentation: |-
+        This field represents how to expose the user-facing endpoints like the Kubernetes API, OpenShift routes of the cluster
   documentation: |-
     The IPI configure step generates the generic portions of the install-config.yaml file based on optional input files.

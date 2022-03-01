@@ -34,3 +34,10 @@ if [ ${FIPS_ENABLED} = "true" ]; then
 fips: true
 EOF
 fi
+
+if [ X"${PUBLISH}" == X"Internal" ]; then
+        echo "Adding 'publish: Internal' to install-config.yaml"
+        cat >> "${out}" << EOF
+publish: Internal
+EOF
+fi 
