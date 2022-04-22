@@ -1,0 +1,17 @@
+{
+	"path": "workers-rhel/azure-provision/workers-rhel-azure-provision-ref.yaml",
+	"owners": {
+		"approvers": [
+			"jianlinliu",
+			"Amoghrd",
+			"yunjiang29",
+			"MayXuQQ"
+		],
+		"reviewers": [
+			"jianlinliu",
+			"Amoghrd",
+			"yunjiang29",
+			"MayXuQQ"
+		]
+	}
+}

@@ -1,0 +1,25 @@
+ref:
+  as: workers-rhel-azure-provision
+  commands: workers-rhel-azure-provision-commands.sh
+  resources:
+    requests:
+      cpu: 100m
+      memory: 200Mi
+  env:
+  - name: RHEL_WORKER_COUNT
+    default: "2"
+    documentation: |-
+      The number of rhel worker to be created.
+  - name: RHEL_IMAGE
+    documentation: |-
+      The name of rhel vm/template used to clone RHEL instances
+  - name: PLATFORM_VERSION
+    default: "8.5"
+    documentation: |-
+      OS version installed on RHEL instance, e.g "8.5".
+  - name: RHEL_USER 
+    default: "test"
+    documentation: |-
+      The user to login the system of RHEL instance
+  documentation: |-
+    The post-installation provision step creates new machinesets which provision new RHEL instances for worker nodes.
