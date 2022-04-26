@@ -276,6 +276,7 @@ config_updater:
       - build02
       - build03
       - build04
+      - build05
       - vsphere
       namespaces:
       - ci
@@ -286,6 +287,7 @@ config_updater:
       - build02
       - build03
       - build04
+      - build05
       - vsphere
       namespaces:
       - ocp
@@ -826,6 +828,12 @@ config_updater:
       gzip: true
       name: ci-operator-misc-configs
     ci-operator/config/redhat-openshift-ecosystem/msp/*-msp-ocp-*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: ci-operator-misc-configs
+    ci-operator/config/redhat-openshift-ecosystem/msp/*-msp-osd-*.yaml:
       clusters:
         app.ci:
         - ci
@@ -1498,6 +1506,12 @@ config_updater:
       gzip: true
       name: job-config-misc
     ci-operator/jobs/redhat-openshift-ecosystem/msp/*msp-ocp-4.*.yaml:
+      clusters:
+        app.ci:
+        - ci
+      gzip: true
+      name: job-config-misc
+    ci-operator/jobs/redhat-openshift-ecosystem/msp/*msp-osd-4.*.yaml:
       clusters:
         app.ci:
         - ci

@@ -1872,6 +1872,13 @@ periodics:
   labels:
     pj-rehearse.openshift.io/can-be-rehearsed: "false"
   name: osde2e-stage-aws-addon-connectors-addon
+  reporter_config:
+    slack:
+      channel: '#rhoc-api-alert'
+      job_states_to_report:
+      - failure
+      - error
+      report_template: Job {{.Spec.Job}} failed.
   spec:
     containers:
     - args:
@@ -1893,6 +1900,10 @@ periodics:
         value: us-east-1
       - name: CONFIGS
         value: aws,stage,addon-suite
+      - name: HIBERNATE_AFTER_USE
+        value: "false"
+      - name: NUM_WORKER_NODES
+        value: "2"
       - name: OCM_CCS
         value: "true"
       - name: SECRET_LOCATIONS
@@ -2729,8 +2740,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -2740,9 +2751,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -2794,8 +2805,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -2805,9 +2816,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -2859,8 +2870,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -2870,9 +2881,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -2924,8 +2935,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -2935,9 +2946,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -2989,8 +3000,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3000,9 +3011,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -3054,8 +3065,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3065,9 +3076,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -3119,8 +3130,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3130,9 +3141,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -3184,8 +3195,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3195,9 +3206,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -3249,8 +3260,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3260,9 +3271,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -3314,8 +3325,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3325,9 +3336,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -3379,8 +3390,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3390,9 +3401,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 */12 * * *
@@ -3444,8 +3455,8 @@ periodics:
       - mountPath: /usr/local/osde2e-credentials
         name: osde2e-credentials
         readOnly: true
-      - mountPath: /usr/local/osde2e-rosa-staging
-        name: osde2e-rosa-staging
+      - mountPath: /usr/local/osde2e-stage-ccs
+        name: osde2e-stage-ccs
         readOnly: true
     serviceAccountName: ci-operator
     volumes:
@@ -3455,9 +3466,9 @@ periodics:
     - name: osde2e-credentials
       secret:
         secretName: osde2e-credentials
-    - name: osde2e-rosa-staging
+    - name: osde2e-stage-ccs
       secret:
-        secretName: osde2e-rosa-staging
+        secretName: osde2e-stage-ccs
 - agent: kubernetes
   cluster: build04
   cron: 0 12 * * *

@@ -39,14 +39,14 @@ tests:
     cluster_profile: aws-qe
     env:
       BASE_DOMAIN: qe.devcluster.openshift.com
-    workflow: cucushift-installer-rehearse-aws-ipi-ovn
+    workflow: cucushift-installer-rehearse-aws-ipi-proxy-manual-cco-security-token-service
 - as: installer-rehearse-aws-disconnected-private-usgov
   interval: 960h
   steps:
     cluster_profile: aws-usgov-qe
     env:
       BASE_DOMAIN: qe.devcluster.openshift.com
-    workflow: cucushift-installer-rehearse-aws-ipi-disconnected-private
+    workflow: cucushift-installer-rehearse-aws-ipi-private-cco-manual-security-token-service
 - as: installer-rehearse-azure
   interval: 960h
   steps:
@@ -70,7 +70,7 @@ tests:
   interval: 960h
   steps:
     cluster_profile: vsphere
-    workflow: cucushift-installer-rehearse-vsphere-ipi-ovn
+    workflow: cucushift-installer-rehearse-vsphere-ipi-ovn-ipsec
 - as: installer-rehearse-vsphere-discon
   interval: 960h
   steps:
